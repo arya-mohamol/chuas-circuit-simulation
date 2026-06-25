@@ -23,8 +23,8 @@ Because the circuit contains a special non-linear component (Chua's Diode), we c
 ## Project Structure
 ```text
 ├── src/
-│   ├── main_simulation.py    
-│   └── phase_animation.py    
+│   ├── main.py    
+│   └── animation.py    
 ├── plots/                    
 ├── README.md                 
 └── requirements.txt          

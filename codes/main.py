@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-alpha_std = 9.35
+alpha = 9.35
 beta = 14.79
 m0 = -1.14
 m1 = -0.71
@@ -23,7 +23,7 @@ def rk4(f_system, t, X, h):
     k4 = f_system(t + h, X + h * k3)
     return X + (h / 6) * (k1 + 2*k2 + 2*k3 + k4)
 
-def run_simulation(X_init, t_end, h, alpha_val=alpha_std):
+def run_simulation(X_init, t_end, h, alpha_val=alpha):
     steps = int(t_end / h)
     history = np.zeros((steps + 1, 4))
     
@@ -57,8 +57,8 @@ if __name__ == "__main__":
     
     # 4
     perturbed_cond = [init_cond[0] + 1e-5, init_cond[1], init_cond[2]]
-    nominal_path = run_simulation(init_cond, t_end=60.0, h=h_stable, alpha_val=alpha_std)
-    perturbed_path = run_simulation(perturbed_cond, t_end=60.0, h=h_stable, alpha_val=alpha_std)
+    nominal_path = run_simulation(init_cond, t_end=60.0, h=h_stable, alpha_val=alpha)
+    perturbed_path = run_simulation(perturbed_cond, t_end=60.0, h=h_stable, alpha_val=alpha)
     
     t_s = nominal_path[:, 0]
     distance = np.sqrt((nominal_path[:, 1] - perturbed_path[:, 1])**2 + (nominal_path[:, 2] - perturbed_path[:, 2])**2 + (nominal_path[:, 3] - perturbed_path[:, 3])**2)
@@ -106,7 +106,7 @@ if __name__ == "__main__":
     # 4
     fig, (ax3, ax4) = plt.subplots(1, 2, figsize=(12, 5))
     ax3.plot(x_val, y_val, lw=0.5, color='indigo')
-    ax3.set_title(f"Chaotic behavior alpha= {alpha_std}")
+    ax3.set_title(f"Chaotic behavior alpha= {alpha}")
     ax3.set_xlabel("X")
     ax3.set_ylabel("Y")
     ax3.grid(True, alpha=0.3)
@@ -131,7 +131,7 @@ if __name__ == "__main__":
     #Lyapunov 
     plt.figure(figsize=(10, 4))
     plt.plot(t_s, distance, color='darkgreen', lw=1.2)
-    plt.title("Distance Between Nominal and Perturbed Trajectories (Lyapunov-like)")
+    plt.title("Lyapunov")
     plt.xlabel("Time")
     plt.ylabel("Euclidean Distance")
     plt.yscale('log')
@@ -143,7 +143,7 @@ if __name__ == "__main__":
     plt.plot(t_s, nominal_path[:, 1], label='Original Trajectory x(t)', color='navy', lw=1.5)               # main plot
     plt.plot(t_s, perturbed_path[:, 1], label='Perturbed Trajectory x(t) (+1e-5)', color='crimson', linestyle='--', lw=1.2)             #  with the slight difference of : 10^-5 
     
-    plt.title("Sensitivity to Initial Conditions (Butterfly Effect)")
+    plt.title("Sensitivity to Initial conditions (Butterfly Effect)")
     plt.xlabel("Time")
     plt.ylabel("X Amplitude")
     plt.grid(True, linestyle='--', alpha=0.5)

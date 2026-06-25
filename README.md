@@ -23,11 +23,11 @@ Because the circuit contains a special non-linear component (Chua's Diode), we c
 ## Project Structure
 ```text
 ├── src/
-│   ├── main_simulation.py    # Run this to calculate data and save all high-quality plots
-│   └── phase_animation.py    # Run this to watch the live 3D moving animation
-├── plots/                    # Auto-generated folder where all output images are saved
-├── README.md                 # This file!
-└── requirements.txt          # Tells Python what libraries we need (NumPy & Matplotlib)
+│   ├── main_simulation.py    
+│   └── phase_animation.py    
+├── plots/                    
+├── README.md                 
+└── requirements.txt          
 ```
 
 ---

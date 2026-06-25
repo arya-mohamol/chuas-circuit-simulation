@@ -22,10 +22,11 @@ Because the circuit contains a special non-linear component (Chua's Diode), we c
 
 ## Project Structure
 ```text
-├── src/
+├── codes/
 │   ├── main.py    
 │   └── animation.py    
-├── plots/                    
+├── plots/             
+├── animation/
 ├── README.md                 
 └── requirements.txt          
 ```

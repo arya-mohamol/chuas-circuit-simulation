@@ -10,7 +10,7 @@ M1    = -0.71
 
 INIT  = np.array([0.1, 0.1, -0.1])
 H     = 0.01
-STEPS = 10_000           
+STEPS = 50_000           
 
 TRAIL = 600             
 SPEED = 4               
@@ -106,8 +106,7 @@ anim = animation.FuncAnimation(
 )
 
 
-
+#anim.save("animation/double_scroll.mp4", writer="ffmpeg", fps=30)
 plt.tight_layout()
 plt.show() 
 
-#anim.save("animation/double_scroll.gif", writer="ffmpeg", fps=30)

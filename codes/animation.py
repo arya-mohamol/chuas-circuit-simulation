@@ -24,7 +24,9 @@ def _derivatives(s):
         x - y + z,
         -BETA * y
     ])
-#rk4
+
+# RK4
+
 def _integrate():
     traj = np.empty((STEPS + 1, 3))
     traj[0] = INIT
@@ -103,5 +105,9 @@ anim = animation.FuncAnimation(
     cache_frame_data=False
 )
 
+
+
 plt.tight_layout()
 plt.show()
+
+anim.save("animation/double_scroll.gif", writer="pillow", fps=30)

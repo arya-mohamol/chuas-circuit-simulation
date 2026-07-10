@@ -17,7 +17,7 @@ SPEED = 4
 
 FPS      = 30
 DURATION = 30
-N_FRAMES = FPS * DURATION   # 900 frames -> 30s at 30fps
+N_FRAMES = FPS * DURATION  
 
 #derivative
 def _derivatives(s):

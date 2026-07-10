@@ -72,7 +72,7 @@ pip install -r requirements.txt
 
 **3. Run the main simulation** (saves all plots to the `plots/` folder)
 ```bash
-python src/simulation.py
+python src/animation.py
 ```
 
 **4. Run the live 3D animation** (optional)

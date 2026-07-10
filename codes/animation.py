@@ -15,6 +15,10 @@ STEPS = 50_000
 TRAIL = 600             
 SPEED = 4               
 
+FPS      = 30
+DURATION = 30
+N_FRAMES = FPS * DURATION   # 900 frames -> 30s at 30fps
+
 #derivative
 def _derivatives(s):
     x, y, z = s
@@ -82,7 +86,7 @@ def _step(_frame):
     if _state["paused"]:
         return trail, head, t_label
 
-    i     = _state["i"]
+    i = _state["i"]
     start = max(0, i - TRAIL)
 
     trail.set_data(X[start:i], Y[start:i])
@@ -99,14 +103,12 @@ def _step(_frame):
 anim = animation.FuncAnimation(
     fig, _step,
     init_func=_init,
+    frames=N_FRAMES,
     interval=16,
     blit=False,
-    repeat=True,
+    repeat=False,
     cache_frame_data=False
 )
 
-
-#anim.save("animation/double_scroll.mp4", writer="ffmpeg", fps=30)
-plt.tight_layout()
-plt.show() 
-
+anim.save("animation/double_scroll.mp4", writer="ffmpeg", fps=FPS)
+plt.show()
